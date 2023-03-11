@@ -10,3 +10,20 @@ export interface EventType {
   description: String;
   image: String;
 }
+
+export interface Props {
+  events: EventType[];
+}
+
+
+export type QueryType = {
+  query: Slug
+}
+
+export type ParamsType = {
+  params: Slug
+}
+
+export type Slug = {
+  slug: String
+}
