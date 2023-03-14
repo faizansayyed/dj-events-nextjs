@@ -8,7 +8,16 @@ export interface EventType {
   date: String;
   time: String;
   description: String;
-  image: String;
+  image: {
+    formats: {
+      medium: {
+        url: String
+      }
+      thumbnail: {
+        url: String
+      }
+    }
+  };
 }
 
 export interface Props {

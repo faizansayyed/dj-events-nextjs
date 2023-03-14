@@ -29,12 +29,13 @@ export default function EventPage({ evt }: Props) {
         </div>
 
         <span>
-          {evt.date} at {evt.time}
+          {new Date(evt.date as string).toLocaleDateString('en-US')} at {evt.time}
         </span>
         <h1>{evt.name}</h1>
         {evt.image && (
           <div className={styles.image}>
-            <Image src={evt.image as string} width={960} height={600} alt={evt.name as string} />
+            <Image src={evt.image ? evt.image.formats.medium.url : ("/images/event-default.png" as any)}
+              width={960} height={600} alt={evt.name as string} />
           </div>
         )}
 
@@ -70,7 +71,7 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params: { slug } }: ParamsType) {
-  const res = await fetch(`${API_URL}/api/events/${slug}`)
+  const res = await fetch(`${API_URL}/api/events/?slug=${slug}`)
   const events = await res.json()
 
   return {
