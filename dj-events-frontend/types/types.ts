@@ -1,23 +1,42 @@
 export interface EventType {
   id: Number;
-  name: String;
-  slug: String;
-  venue: String;
-  address: String;
-  performers: String;
-  date: String;
-  time: String;
-  description: String;
-  image: {
-    formats: {
-      medium: {
-        url: String
+  attributes: {
+    name: String;
+    slug: String;
+    venue: String;
+    address: String;
+    performers: String;
+    date: String;
+    time: String;
+    description: String;
+    image: {
+      data: {
+        attributes: {
+          formats: {
+            medium: {
+              url: String
+            }
+            thumbnail: {
+              url: String
+            }
+          }
+        }
       }
-      thumbnail: {
-        url: String
-      }
+
+    };
+  }
+}
+
+export interface ResponseData {
+  data: EventType[],
+  meta: {
+    pagination: {
+      page: Number,
+      pageSize: Number,
+      pageCount: Number,
+      total: Number
     }
-  };
+  }
 }
 
 export interface Props {

@@ -11,8 +11,8 @@ export default function EventItem({ evt }: Props) {
     <div className={styles.event}>
       <div className={styles.img}>
         <Image
-          src={evt.image ? evt.image.formats.thumbnail.url : ("/images/event-default.png" as any)}
-          alt={evt.name as any}
+          src={evt.attributes.image ? evt.attributes.image.data.attributes.formats.thumbnail.url : ("/images/event-default.png" as any)}
+          alt={evt.attributes.name as any}
           width={170}
           height={100}
         />
@@ -20,13 +20,13 @@ export default function EventItem({ evt }: Props) {
 
       <div className={styles.info}>
         <span>
-          {new Date(evt.date as string).toLocaleDateString('en-US')} at {evt.time}
+          {new Date(evt.attributes.date as string).toLocaleDateString('en-US')} at {evt.attributes.time}
         </span>
-        <h3>{evt.name}</h3>
+        <h3>{evt.attributes.name}</h3>
       </div>
 
       <div className={styles.link}>
-        <Link href={`/events/${evt.slug}`}>
+        <Link href={`/events/${evt.attributes.slug}`}>
           Details
         </Link>
       </div>
